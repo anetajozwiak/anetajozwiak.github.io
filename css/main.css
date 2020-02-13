@@ -1,0 +1,846 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: "Audiowide", cursive;
+}
+
+#header {
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  background: black;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.crosshair {
+  pointer-events: none;
+  z-index: 1000;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 10px solid rgba(255, 255, 255, 0.7);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: -9999px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.crosshair::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 3;
+}
+
+.title__start {
+  color: navy;
+  font-size: 5em;
+  text-align: center;
+  -webkit-animation: zoomInDown 5s infinite;
+          animation: zoomInDown 5s infinite;
+}
+
+.btn__start {
+  color: navy;
+  font-size: 2em;
+  font-weight: bold;
+  width: 10em;
+  height: 5em;
+  border: 0;
+  font-family: "Audiowide", cursive;
+  -webkit-animation: flash 1.8s infinite;
+          animation: flash 1.8s infinite;
+  outline: 0;
+  background: 0;
+}
+
+@-webkit-keyframes flash {
+  from,
+  50%,
+  to {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes flash {
+  from,
+  50%,
+  to {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0.6;
+  }
+}
+
+@-webkit-keyframes zoomInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+            transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 200px, 0);
+            transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 200px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+            animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  }
+}
+
+@keyframes zoomInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+            transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 200px, 0);
+            transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 200px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+            animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  }
+}
+
+#space-box {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.earth {
+  background-image: url(../image/earth.png);
+  -webkit-transform: scale(0.7);
+          transform: scale(0.7);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: absolute;
+  top: 5%;
+  left: -2%;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+}
+
+.score {
+  display: none;
+  position: absolute;
+  right: 1.5%;
+  top: 2%;
+  z-index: 6;
+  color: #fff;
+  font-size: 5em;
+  background: radial-gradient(lime, navy);
+  border-radius: 30%;
+}
+
+.level1 {
+  display: none;
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -30%);
+          transform: translate(-50%, -30%);
+  text-align: center;
+}
+
+.text__level1 {
+  color: lime;
+  margin: 0;
+  font-size: 8rem;
+  width: 600px;
+  -webkit-animation-name: heartBeat;
+          animation-name: heartBeat;
+  -webkit-animation-duration: 1.3s;
+          animation-duration: 1.3s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+}
+
+@-webkit-keyframes heartBeat {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  14% {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+  28% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  42% {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+  70% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes heartBeat {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  14% {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+  28% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  42% {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+  70% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+.btn__level1 {
+  background: radial-gradient(lime, navy);
+  color: navy;
+  border-radius: 100%;
+  font-size: 5em;
+  width: 2em;
+  height: 2em;
+  font-family: "Audiowide", cursive;
+  -webkit-animation: flash 1.8s infinite;
+          animation: flash 1.8s infinite;
+  outline: 0;
+  border: 0;
+}
+
+@keyframes flash {
+  from,
+  50%,
+  to {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0.6;
+  }
+}
+
+.metLevel1Top {
+  width: 20%;
+  height: 10%;
+  background-image: url(../image/flameRight.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: calc(100% + 20%);
+  -webkit-animation: animLevel1Top 8s 0s infinite linear, walkLevel1Top 4s 0s 0.8 ease-in forwards;
+          animation: animLevel1Top 8s 0s infinite linear, walkLevel1Top 4s 0s 0.8 ease-in forwards;
+}
+
+@-webkit-keyframes animLevel1Top {
+  100% {
+    background-position-x: right;
+  }
+}
+
+@keyframes animLevel1Top {
+  100% {
+    background-position-x: right;
+  }
+}
+
+@-webkit-keyframes walkLevel1Top {
+  100% {
+    left: -80%;
+  }
+}
+
+@keyframes walkLevel1Top {
+  100% {
+    left: -80%;
+  }
+}
+
+.metLevel1Bottom {
+  width: 20%;
+  height: 10%;
+  background-image: url(../image/flameRight.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: calc(100% + 20%);
+  -webkit-animation: animLevel1Bottom 4s 0s infinite linear, walkLevel1Bottom 2s 0s 0.8 ease-out forwards;
+          animation: animLevel1Bottom 4s 0s infinite linear, walkLevel1Bottom 2s 0s 0.8 ease-out forwards;
+}
+
+@-webkit-keyframes animLevel1Bottom {
+  100% {
+    background-position-x: right;
+  }
+}
+
+@keyframes animLevel1Bottom {
+  100% {
+    background-position-x: right;
+  }
+}
+
+@-webkit-keyframes walkLevel1Bottom {
+  100% {
+    left: -80%;
+  }
+}
+
+@keyframes walkLevel1Bottom {
+  100% {
+    left: -80%;
+  }
+}
+
+.metLevel1Center {
+  width: 20%;
+  height: 10%;
+  background-image: url(../image/flameRight.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: calc(100% + 20%);
+  -webkit-animation: animLevel1Center 6s 0s infinite linear, walkLevel1Center 4s 0s 0.5 linear forwards;
+          animation: animLevel1Center 6s 0s infinite linear, walkLevel1Center 4s 0s 0.5 linear forwards;
+}
+
+@-webkit-keyframes animLevel1Center {
+  100% {
+    background-position-x: right;
+  }
+}
+
+@keyframes animLevel1Center {
+  100% {
+    background-position-x: right;
+  }
+}
+
+@-webkit-keyframes walkLevel1Center {
+  100% {
+    left: -20%;
+  }
+}
+
+@keyframes walkLevel1Center {
+  100% {
+    left: -20%;
+  }
+}
+
+@-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale3d(0.5, 0.5, 0.5);
+            transform: scale3d(0.5, 0.5, 0.5);
+  }
+  50% {
+    -webkit-transform: scale3d(1.3, 1.3, 1.3);
+            transform: scale3d(1.3, 1.3, 1.3);
+  }
+}
+
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(0.5, 0.5, 0.5);
+            transform: scale3d(0.5, 0.5, 0.5);
+  }
+  50% {
+    -webkit-transform: scale3d(1.3, 1.3, 1.3);
+            transform: scale3d(1.3, 1.3, 1.3);
+  }
+}
+
+.level2 {
+  display: none;
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -30%);
+          transform: translate(-50%, -30%);
+  text-align: center;
+}
+
+.text__level2 {
+  color: lime;
+  margin: 0;
+  font-size: 8rem;
+  width: 600px;
+  -webkit-animation-name: heartBeat;
+          animation-name: heartBeat;
+  -webkit-animation-duration: 1.3s;
+          animation-duration: 1.3s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+}
+
+@keyframes heartBeat {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  14% {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+  28% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  42% {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+  70% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+.btn__level2 {
+  background: radial-gradient(lime, navy);
+  color: navy;
+  border-radius: 100%;
+  font-size: 5em;
+  width: 2em;
+  height: 2em;
+  font-family: "Audiowide", cursive;
+  -webkit-animation: flash 1.8s infinite;
+          animation: flash 1.8s infinite;
+  outline: 0;
+  border: 0;
+}
+
+.metLevel2Top {
+  width: 20%;
+  height: 10%;
+  background-image: url(../image/flameLeft.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  right: calc(100% + 20%);
+  -webkit-animation: animLevel2Top 8s 0s infinite linear, walkLevel2Top 4s 0s 0.8 linear forwards;
+          animation: animLevel2Top 8s 0s infinite linear, walkLevel2Top 4s 0s 0.8 linear forwards;
+}
+
+@-webkit-keyframes animLevel2Top {
+  100% {
+    background-position-x: left;
+  }
+}
+
+@keyframes animLevel2Top {
+  100% {
+    background-position-x: left;
+  }
+}
+
+@-webkit-keyframes walkLevel2Top {
+  100% {
+    right: -80%;
+  }
+}
+
+@keyframes walkLevel2Top {
+  100% {
+    right: -80%;
+  }
+}
+
+.metLevel2Bottom {
+  width: 20%;
+  height: 10%;
+  background-image: url(../image/flameLeft.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  right: calc(100% + 20%);
+  -webkit-animation: animLevel2Bottom 4s 0s infinite linear, walkLevel2Bottom 2s 0s 0.8 linear forwards;
+          animation: animLevel2Bottom 4s 0s infinite linear, walkLevel2Bottom 2s 0s 0.8 linear forwards;
+}
+
+@-webkit-keyframes animLevel2Bottom {
+  100% {
+    background-position-x: left;
+  }
+}
+
+@keyframes animLevel2Bottom {
+  100% {
+    background-position-x: left;
+  }
+}
+
+@-webkit-keyframes walkLevel2Bottom {
+  100% {
+    right: -80%;
+  }
+}
+
+@keyframes walkLevel2Bottom {
+  100% {
+    right: -80%;
+  }
+}
+
+.metLevel2Center {
+  width: 20%;
+  height: 10%;
+  background-image: url(../image/flameLeft.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  right: calc(100% + 20%);
+  -webkit-animation: animLevel2Center 6s 0s infinite linear, walkLevel2Center 4s 0s 0.5 linear forwards;
+          animation: animLevel2Center 6s 0s infinite linear, walkLevel2Center 4s 0s 0.5 linear forwards;
+}
+
+@-webkit-keyframes animLevel2Center {
+  100% {
+    background-position-x: left;
+  }
+}
+
+@keyframes animLevel2Center {
+  100% {
+    background-position-x: left;
+  }
+}
+
+@-webkit-keyframes walkLevel2Center {
+  100% {
+    right: -50%;
+  }
+}
+
+@keyframes walkLevel2Center {
+  100% {
+    right: -50%;
+  }
+}
+
+.metLevel3Center {
+  width: 20%;
+  height: 10%;
+  background-image: url(../image/flameRight.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: calc(100% + 20%);
+  -webkit-animation: animLevel3Center 5s 0s infinite linear, walkLevel3Center 3s 0s 0.5 linear forwards;
+          animation: animLevel3Center 5s 0s infinite linear, walkLevel3Center 3s 0s 0.5 linear forwards;
+}
+
+@-webkit-keyframes animLevel3Center {
+  100% {
+    background-position-x: right;
+  }
+}
+
+@keyframes animLevel3Center {
+  100% {
+    background-position-x: right;
+  }
+}
+
+@-webkit-keyframes walkLevel3Center {
+  100% {
+    left: -10%;
+  }
+}
+
+@keyframes walkLevel3Center {
+  100% {
+    left: -10%;
+  }
+}
+
+.level3 {
+  display: none;
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -30%);
+          transform: translate(-50%, -30%);
+  text-align: center;
+}
+
+.text__level3 {
+  color: lime;
+  margin: 0;
+  width: 600px;
+  font-size: 8rem;
+  -webkit-animation-name: heartBeat;
+          animation-name: heartBeat;
+  -webkit-animation-duration: 1.3s;
+          animation-duration: 1.3s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+}
+
+@keyframes heartBeat {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  14% {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+  28% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  42% {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+  }
+  70% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+.btn__level3 {
+  background: radial-gradient(lime, navy);
+  color: navy;
+  border-radius: 100%;
+  font-size: 5em;
+  width: 2em;
+  height: 2em;
+  font-family: "Audiowide", cursive;
+  outline: 0;
+  border: 0;
+  -webkit-animation: flash 1.8s infinite;
+          animation: flash 1.8s infinite;
+}
+
+.metLevel4Center {
+  width: 20%;
+  height: 10%;
+  background-image: url(../image/flameLeft.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  right: calc(100% + 20%);
+  -webkit-animation: animLevel4Center 6s 0s infinite linear, walkLevel4Center 4s 0s 0.5 linear forwards;
+          animation: animLevel4Center 6s 0s infinite linear, walkLevel4Center 4s 0s 0.5 linear forwards;
+}
+
+@-webkit-keyframes animLevel4Center {
+  100% {
+    background-position-x: left;
+  }
+}
+
+@keyframes animLevel4Center {
+  100% {
+    background-position-x: left;
+  }
+}
+
+@-webkit-keyframes walkLevel4Center {
+  100% {
+    right: -40%;
+  }
+}
+
+@keyframes walkLevel4Center {
+  100% {
+    right: -40%;
+  }
+}
+
+.fireball {
+  background-image: url(../image/fireball.png);
+  -webkit-animation-name: pulse;
+          animation-name: pulse;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+}
+
+.restart {
+  display: none;
+  font-family: "Audiowide", cursive;
+  font-size: 3em;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 5;
+  color: white;
+  background: 0;
+  width: 220px;
+  height: 70px;
+  outline: none;
+  border: none;
+}
+
+.clock {
+  color: white;
+  position: absolute;
+  font-size: 5em;
+  z-index: 6;
+  left: 1.5%;
+  top: 2%;
+  margin: 0;
+  padding: 0;
+}
+
+.winner {
+  display: none;
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 0;
+  color: lime;
+  margin: 0;
+  font-size: 5rem;
+  text-align: center;
+  -webkit-animation-name: heartBeat;
+          animation-name: heartBeat;
+  -webkit-animation-duration: 1.3s;
+          animation-duration: 1.3s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+}
+
+.record__text {
+  display: none;
+  position: absolute;
+  top: 5%;
+  left: 0;
+  z-index: 3;
+  color: red;
+  margin: 0;
+  font-size: 3rem;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .score {
+    font-size: 3em;
+  }
+  .level1 {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -10%);
+            transform: translate(-50%, -10%);
+  }
+  .text__level1 {
+    font-size: 3em;
+  }
+  .btn__level1 {
+    font-size: 3em;
+  }
+  .level2 {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -10%);
+            transform: translate(-50%, -10%);
+  }
+  .text__level2 {
+    font-size: 3em;
+  }
+  .btn__level2 {
+    font-size: 3em;
+  }
+  .level3 {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -10%);
+            transform: translate(-50%, -10%);
+  }
+  .text__level3 {
+    font-size: 3em;
+  }
+  .btn__level3 {
+    font-size: 3em;
+  }
+  .winner {
+    font-size: 3em;
+  }
+  .clock {
+    font-size: 3em;
+  }
+}
+
+@media (max-width: 410px) {
+  .score {
+    font-size: 1.1em;
+  }
+  .clock {
+    font-size: 1.1em;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

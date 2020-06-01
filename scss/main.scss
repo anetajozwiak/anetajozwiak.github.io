@@ -58,13 +58,13 @@ body {
 
 .title__start {
   color: navy;
-  font-size: 5em;
+  font-size: 3.5em;
   text-align: center;
   animation: zoomInDown 5s infinite;
 }
 
 .btn__start {
-  color: navy;
+  color: red;
   font-size: 2em;
   font-weight: bold;
   width:10em;
@@ -74,7 +74,6 @@ body {
   animation: flash 1.8s infinite;
   outline: 0;
   background: 0;
-  padding-bottom: 1em;
 }
 
 //Animacje start

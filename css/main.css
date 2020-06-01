@@ -73,27 +73,22 @@ body {
           animation: flash 1.8s infinite;
   outline: 0;
   background: 0;
+  padding-bottom: 1em;
 }
 
 @-webkit-keyframes flash {
-  from,
-  50%,
-  to {
+  50% {
     opacity: 1;
   }
-  25%,
   75% {
     opacity: 0.6;
   }
 }
 
 @keyframes flash {
-  from,
-  50%,
-  to {
+  50% {
     opacity: 1;
   }
-  25%,
   75% {
     opacity: 0.6;
   }

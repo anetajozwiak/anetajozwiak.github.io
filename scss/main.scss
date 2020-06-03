@@ -18,7 +18,7 @@ body {
 //Panel startowy
 //Kursor - okrągły
 .crosshair {
-  cursor: none;
+  pointer-events: none;
   z-index: 1000;
   width: 100px;
   height: 100px;
@@ -35,7 +35,7 @@ body {
 
 //Kropka w środku kursora
 .crosshair::after {
-  cursor: none;
+  pointer-events: none;
   content: "";
   width: 20px;
   height: 20px;

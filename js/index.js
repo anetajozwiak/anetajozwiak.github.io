@@ -341,7 +341,7 @@ btn2.addEventListener("click", function(e) {
     clickButton();
     clickButton2();
     setup2();
-    earth.style.transform = `scale(1)`;
+    earth.style.transform = `scale(0.69)`;
 })
 
 //Meteoryty z lewej strony
@@ -517,7 +517,7 @@ btn3.addEventListener("click", function(e) {
     clickButton3();
     clickButton4();
     setup3();
-    earth.style.transform = `scale(1.3)`;
+    earth.style.transform = `scale(0.85)`;
 })
 
 //Meteoryty z prawej strony
